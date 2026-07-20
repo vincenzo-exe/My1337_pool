@@ -5,7 +5,7 @@ int	is_sep(char c, char *charset)
 	int	i;
 
 	i = 0;
-	while (charset[i] != '\0')
+	while (charset[i])
 	{
 		if (charset[i] == c)
 			return (1);
@@ -16,19 +16,19 @@ int	is_sep(char c, char *charset)
 
 int	word_count(char *str, char *charset)
 {
-	int	count;
 	int	i;
+	int	count;
 
-	count = 0;
 	i = 0;
-	while (str[i] != '\0')
+	count = 0;
+	while (str[i])
 	{
-		while (str[i] != '\0' && is_sep(str[i], charset))
+		while (str[i] && is_sep(str[i], charset))
 			i++;
-		if (str[i] != '\0')
+		if (str[i])
 		{
 			count++;
-			while (str[i] != '\0' && is_sep(str[i], charset) == 0)
+			while (str[i] && !is_sep(str[i], charset))
 				i++;
 		}
 	}
@@ -40,7 +40,7 @@ int	word_len(char *str, char *charset)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0' && is_sep(str[i], charset) == 0)
+	while (str[i] && !is_sep(str[i], charset))
 		i++;
 	return (i);
 }
@@ -51,7 +51,7 @@ char	*copy_word(char *str, int len)
 	int		i;
 
 	word = malloc(len + 1);
-	if (word == NULL)
+	if (!word)
 		return (NULL);
 	i = 0;
 	while (i < len)
@@ -65,26 +65,24 @@ char	*copy_word(char *str, int len)
 
 char	**ft_split(char *str, char *charset)
 {
-	char	**split;
-	int		words;
-	int		i;
-	int		j;
+	char **split;
+	int i;
+	int j;
 
-	words = word_count(str, charset);
-	split = malloc(sizeof(char *) * (words + 1));
-	if (split == NULL)
+	split = malloc(sizeof(char *) * (word_count(str, charset) + 1));
+	if (!split)
 		return (NULL);
 	i = 0;
 	j = 0;
 	while (str[i])
 	{
-		while (str[i] != '\0' && is_sep(str[i], charset))
+		while (str[i] && is_sep(str[i], charset))
 			i++;
-		if (str[i] != '\0')
+		if (str[i])
 		{
 			split[j] = copy_word(&str[i], word_len(&str[i], charset));
 			j++;
-			while (str[i] != '\0' && is_sep(str[i], charset) == 0)
+			while (str[i] && !is_sep(str[i], charset))
 				i++;
 		}
 	}

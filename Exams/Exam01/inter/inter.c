@@ -2,9 +2,9 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	j;
-	int	k;
+	int i;
+	int j;
+	int k;
 
 	if (argc == 3)
 	{

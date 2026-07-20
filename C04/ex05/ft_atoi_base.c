@@ -1,33 +1,33 @@
-int    get_index(char c, char *base)
+int	get_index(char c, char *base)
 {
-    int	i;
+	int	i;
 
-    i = 0;
-    while (base[i])
-    {
-        if (base[i] == c)
-            return (i);
-        i++;
-    }
-    return (-1);
+	i = 0;
+	while (base[i])
+	{
+		if (base[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
 }
 
-int    ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-    int	i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 int	ft_atoi_base(char *nbr, char *base)
 {
-	int	i;
-	int	sign;
-	int	result;
-	int	value;
+	int i;
+	int sign;
+	int result;
+	int value;
 
 	i = 0;
 	sign = 1;

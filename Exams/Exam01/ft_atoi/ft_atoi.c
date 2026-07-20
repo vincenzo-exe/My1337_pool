@@ -1,14 +1,14 @@
 int	ft_is_space(char c)
 {
-	return (c == ' ' || c == '\t' || c == '\n'
-		|| c == '\v' || c == '\f' || c == '\r');
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r');
 }
 
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	sign;
-	int	result;
+	int i;
+	int sign;
+	int result;
 
 	i = 0;
 	sign = 1;

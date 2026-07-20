@@ -42,7 +42,7 @@ void	generate_comb(int *tab, int n, int pos, int start)
 
 void	ft_print_combn(int n)
 {
-	int	tab[10];
+	int tab[10];
 
 	generate_comb(tab, n, 0, 0);
 	write(1, "\n", 1);

@@ -14,8 +14,8 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = argc - 1;
 	while (i > 0)

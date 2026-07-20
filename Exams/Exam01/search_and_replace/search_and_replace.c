@@ -2,7 +2,7 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
+	int i;
 
 	if (argc == 4 && !argv[2][1] && !argv[3][1])
 	{

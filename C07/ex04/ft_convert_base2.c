@@ -1,38 +1,6 @@
 #include <stdlib.h>
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-int	check_base(char *base)
-{
-	int	i;
-	int	j;
-
-	if (ft_strlen(base) < 2)
-		return (0);
-	i = 0;
-	while (base[i])
-	{
-		if (base[i] == '+' || base[i] == '-' || base[i] == ' ')
-			return (0);
-		j = i + 1;
-		while (base[j])
-		{
-			if (base[i] == base[j])
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
+int			ft_strlen(char *str);
 
 int	get_index(char c, char *base)
 {
@@ -52,12 +20,12 @@ int	ft_atoi_base(char *nbr, char *base)
 {
 	int	i;
 	int	sign;
-	int	result;
-	int	value;
+	int	res;
+	int	val;
 
 	i = 0;
 	sign = 1;
-	result = 0;
+	res = 0;
 	while (nbr[i] == ' ' || nbr[i] == '\t' || nbr[i] == '\n' || nbr[i] == '\v'
 		|| nbr[i] == '\f' || nbr[i] == '\r')
 		i++;
@@ -67,27 +35,20 @@ int	ft_atoi_base(char *nbr, char *base)
 			sign = -sign;
 		i++;
 	}
-	while (nbr[i])
+	val = get_index(nbr[i], base);
+	while (val != -1)
 	{
-		value = get_index(nbr[i], base);
-		if (value == -1)
-			break ;
-		result = result * ft_strlen(base) + value;
+		res = res * ft_strlen(base) + val;
 		i++;
+		val = get_index(nbr[i], base);
 	}
-	return (result * sign);
+	return (res * sign);
 }
 
-char	*ft_putnbr_base(int nbr, char *base)
+static int	get_size(long nb, int len)
 {
-	char *str;
-	long nb;
-	int len;
-	int i;
-	int size;
+	int	size;
 
-	nb = nbr;
-	len = ft_strlen(base);
 	size = 1;
 	if (nb < 0)
 	{
@@ -99,24 +60,40 @@ char	*ft_putnbr_base(int nbr, char *base)
 		nb /= len;
 		size++;
 	}
+	return (size);
+}
+
+static void	fill_digits(char *str, long nb, char *base, int i)
+{
+	int	len;
+
+	len = ft_strlen(base);
+	if (nb == 0)
+		str[i] = base[0];
+	while (nb > 0)
+	{
+		str[i--] = base[nb % len];
+		nb /= len;
+	}
+}
+
+char	*ft_putnbr_base(int nbr, char *base)
+{
+	char	*str;
+	long	nb;
+	int		size;
+
+	nb = nbr;
+	size = get_size(nb, ft_strlen(base));
 	str = malloc(size + 1);
 	if (!str)
 		return (NULL);
 	str[size] = '\0';
-	nb = nbr;
 	if (nb < 0)
 	{
 		str[0] = '-';
 		nb = -nb;
 	}
-	i = size - 1;
-	if (nb == 0)
-		str[i] = base[0];
-	while (nb > 0)
-	{
-		str[i] = base[nb % len];
-		nb /= len;
-		i--;
-	}
+	fill_digits(str, nb, base, size - 1);
 	return (str);
 }

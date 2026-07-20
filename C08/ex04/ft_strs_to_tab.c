@@ -64,7 +64,7 @@ int	ft_fill_tab(t_stock_str *tab, int ac, char **av)
 
 t_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
-	t_stock_str	*output;
+	t_stock_str *output;
 
 	output = malloc(sizeof(t_stock_str) * (ac + 1));
 	if (output == NULL)

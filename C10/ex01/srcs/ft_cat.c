@@ -33,13 +33,11 @@ void	ft_cat(char *file)
 		print_error(file);
 		return ;
 	}
-
 	ret = read(fd, buffer, sizeof(buffer));
 	while (ret > 0)
 	{
 		write(1, buffer, ret);
 		ret = read(fd, buffer, sizeof(buffer));
 	}
-
 	close(fd);
 }
