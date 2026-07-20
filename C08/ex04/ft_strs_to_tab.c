@@ -1,5 +1,5 @@
-#include <stdlib.h>
 #include "ft_stock_str.h"
+#include <stdlib.h>
 
 int	ft_strlen(char *str)
 {
@@ -19,11 +19,9 @@ char	*ft_strdup(char *src)
 	i = 0;
 	while (src[i] != '\0')
 		i++;
-
 	copy = malloc(sizeof(char) * (i + 1));
 	if (copy == NULL)
 		return (NULL);
-
 	i = 0;
 	while (src[i] != '\0')
 	{
@@ -31,41 +29,49 @@ char	*ft_strdup(char *src)
 		i++;
 	}
 	copy[i] = '\0';
-
 	return (copy);
+}
+
+void	ft_free_tab(t_stock_str *tab, int i)
+{
+	while (i >= 0)
+	{
+		free(tab[i].copy);
+		i--;
+	}
+	free(tab);
+}
+
+int	ft_fill_tab(t_stock_str *tab, int ac, char **av)
+{
+	int	i;
+
+	i = 0;
+	while (i < ac)
+	{
+		tab[i].size = ft_strlen(av[i]);
+		tab[i].str = av[i];
+		tab[i].copy = ft_strdup(av[i]);
+		if (tab[i].copy == NULL)
+		{
+			ft_free_tab(tab, i);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }
 
 t_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
 	t_stock_str	*output;
-	int			i;
 
 	output = malloc(sizeof(t_stock_str) * (ac + 1));
 	if (output == NULL)
 		return (NULL);
-
-	i = 0;
-	while (i < ac)
-	{
-		output[i].size = ft_strlen(av[i]);
-		output[i].str = av[i];
-		output[i].copy = ft_strdup(av[i]);
-
-		if (output[i].copy == NULL)
-		{
-			while (i >= 0)
-			{
-				free(output[i].copy);
-				i--;
-			}
-			free(output);
-			return (NULL);
-		}
-		i++;
-	}
-
-	output[i].str = NULL;
-	output[i].copy = NULL;
-
+	if (ft_fill_tab(output, ac, av) == 0)
+		return (NULL);
+	output[ac].str = 0;
+	output[ac].copy = 0;
 	return (output);
 }
