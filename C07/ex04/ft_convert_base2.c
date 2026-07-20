@@ -20,8 +20,7 @@ int	check_base(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '+' || base[i] == '-' 
-			|| base[i] == ' ')
+		if (base[i] == '+' || base[i] == '-' || base[i] == ' ')
 			return (0);
 		j = i + 1;
 		while (base[j])
@@ -59,7 +58,8 @@ int	ft_atoi_base(char *nbr, char *base)
 	i = 0;
 	sign = 1;
 	result = 0;
-	while ((nbr[i] >= 9 && nbr[i] <= 13) || nbr[i] == ' ')
+	while (nbr[i] == ' ' || nbr[i] == '\t' || nbr[i] == '\n' || nbr[i] == '\v'
+		|| nbr[i] == '\f' || nbr[i] == '\r')
 		i++;
 	while (nbr[i] == '+' || nbr[i] == '-')
 	{
@@ -80,11 +80,11 @@ int	ft_atoi_base(char *nbr, char *base)
 
 char	*ft_putnbr_base(int nbr, char *base)
 {
-	char	*str;
-	long	nb;
-	int		len;
-	int		i;
-	int		size;
+	char *str;
+	long nb;
+	int len;
+	int i;
+	int size;
 
 	nb = nbr;
 	len = ft_strlen(base);
