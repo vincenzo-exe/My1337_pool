@@ -14,7 +14,7 @@
 
 void	ft_putnbr(int nb)
 {
-	char	n;
+	char	c;
 
 	if (nb == -2147483648)
 	{
@@ -30,6 +30,6 @@ void	ft_putnbr(int nb)
 	{
 		ft_putnbr(nb / 10);
 	}
-	n = nb % 10 + '0';
-	write(1, &n, 1);
+	c = nb % 10 + '0';
+	write(1, &c, 1);
 }
