@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/12 19:34:06 by vincenzo          #+#    #+#             */
-/*   Updated: 2026/07/29 15:19:08 by marvin           ###   ########.fr       */
+/*   Updated: 2026/07/29 17:31:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	ft_is_space(char c)
 {
-	if (c >= 9 && c <= 13 || c == 32)
-		return (1);
-	return (0);
+	return ((c >= 9 && c <= 13) || c == 32);
 }
 
 int	ft_atoi(char *str)
