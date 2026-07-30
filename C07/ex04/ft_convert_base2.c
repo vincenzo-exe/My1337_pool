@@ -81,9 +81,9 @@ void	fill_digits(char *str, long nb, char *base, int i)
 
 char	*ft_putnbr_base(int nbr, char *base)
 {
-	char *str;
-	long nb;
-	int size;
+	char	*str;
+	long	nb;
+	int		size;
 
 	nb = nbr;
 	size = get_size(nb, ft_strlen(base));

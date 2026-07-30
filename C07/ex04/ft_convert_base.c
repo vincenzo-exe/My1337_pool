@@ -26,16 +26,15 @@ int	ft_strlen(char *str)
 
 int	check_base(char *base)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	if (ft_strlen(base) < 2)
 		return (0);
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '+' || base[i] == '-' || (base[i] >= 9 && base[i] <= 13)
-			|| base[i] == ' ')
+		if (base[i] <= 32 || base[i] == 127 || base[i] == '+' || base[i] == '-')
 			return (0);
 		j = i + 1;
 		while (base[j])
