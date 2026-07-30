@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-int			ft_strlen(char *str);
+int		ft_strlen(char *str);
 
 int	get_index(char c, char *base)
 {
@@ -20,14 +20,13 @@ int	ft_atoi_base(char *nbr, char *base)
 {
 	int	i;
 	int	sign;
-	int	res;
-	int	val;
+	int	result;
+	int	value;
 
 	i = 0;
 	sign = 1;
-	res = 0;
-	while (nbr[i] == ' ' || nbr[i] == '\t' || nbr[i] == '\n' || nbr[i] == '\v'
-		|| nbr[i] == '\f' || nbr[i] == '\r')
+	result = 0;
+	while ((nbr[i] >= 9 && nbr[i] <= 13) || nbr[i] == ' ')
 		i++;
 	while (nbr[i] == '+' || nbr[i] == '-')
 	{
@@ -35,17 +34,17 @@ int	ft_atoi_base(char *nbr, char *base)
 			sign = -sign;
 		i++;
 	}
-	val = get_index(nbr[i], base);
-	while (val != -1)
+	value = get_index(nbr[i], base);
+	while (value != -1)
 	{
-		res = res * ft_strlen(base) + val;
+		result = result * ft_strlen(base) + value;
 		i++;
-		val = get_index(nbr[i], base);
+		value = get_index(nbr[i], base);
 	}
-	return (res * sign);
+	return (result * sign);
 }
 
-static int	get_size(long nb, int len)
+int	get_size(long nb, int len)
 {
 	int	size;
 
@@ -63,13 +62,16 @@ static int	get_size(long nb, int len)
 	return (size);
 }
 
-static void	fill_digits(char *str, long nb, char *base, int i)
+void	fill_digits(char *str, long nb, char *base, int i)
 {
 	int	len;
 
 	len = ft_strlen(base);
 	if (nb == 0)
+	{
 		str[i] = base[0];
+		return ;
+	}
 	while (nb > 0)
 	{
 		str[i--] = base[nb % len];
@@ -79,9 +81,9 @@ static void	fill_digits(char *str, long nb, char *base, int i)
 
 char	*ft_putnbr_base(int nbr, char *base)
 {
-	char	*str;
-	long	nb;
-	int		size;
+	char *str;
+	long nb;
+	int size;
 
 	nb = nbr;
 	size = get_size(nb, ft_strlen(base));
