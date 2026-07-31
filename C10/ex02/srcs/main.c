@@ -15,9 +15,19 @@ int	ft_atoi(char *str)
 	return (nbr);
 }
 
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
+}
+
 int	main(int argc, char **argv)
 {
-	if (argc == 4 && strcmp(argv[1], "-c") == 0)
+	if (argc == 4 && ft_strcmp(argv[1], "-c") == 0)
 	{
 		ft_tail(argv[3], ft_atoi(argv[2]));
 	}
