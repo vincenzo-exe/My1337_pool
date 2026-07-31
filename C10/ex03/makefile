@@ -3,7 +3,7 @@ NAME = ft_hexdump
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = srcs/main.c srcs/ft_hexdump.c
+SRC = srcs/main.c srcs/ft_hexdump.c srcs/ft_hexdump_utils.c
 
 all: $(NAME)
 
