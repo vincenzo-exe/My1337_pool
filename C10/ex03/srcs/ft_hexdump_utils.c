@@ -2,6 +2,16 @@
 
 int		ft_strlen(char *str);
 
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
+}
+
 void	print_error(char *file)
 {
 	write(2, "ft_hexdump: ", 12);
@@ -53,7 +63,7 @@ void	fill_hex(char *line, unsigned char *buf, int len, int *j)
 
 void	fill_ascii(char *line, unsigned char *buf, int len, int *j)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < len)

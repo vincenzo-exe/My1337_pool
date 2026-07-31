@@ -33,10 +33,10 @@ void	print_hex(unsigned char *buf, int len, int offset)
 
 void	ft_hexdump(char *file)
 {
-	int fd;
-	int ret;
-	int offset;
-	unsigned char buffer[16];
+	int				fd;
+	int				ret;
+	int				offset;
+	unsigned char	buffer[16];
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
