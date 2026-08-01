@@ -7,9 +7,9 @@ int	ft_is_space(char c)
 
 int	ft_atoi(char *str)
 {
-	int i;
-	int result;
-	int sign;
+	int	i;
+	int	result;
+	int	sign;
 
 	i = 0;
 	result = 0;

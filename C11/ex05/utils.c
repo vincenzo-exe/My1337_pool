@@ -34,3 +34,10 @@ int	check_error(int index, int b)
 	}
 	return (0);
 }
+
+int	get_index(char *op)
+{
+	if (op[1] != '\0')
+		return (-1);
+	return (get_operation(op[0]));
+}

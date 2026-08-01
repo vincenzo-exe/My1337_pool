@@ -5,13 +5,14 @@ int		ft_atoi(char *str);
 void	ft_putnbr(int nb);
 int		get_operation(char op);
 int		check_error(int index, int b);
+int		get_index(char *op);
 
 int	main(int argc, char **argv)
 {
-	int (*functions[5])(int, int);
-	int a;
-	int b;
-	int index;
+	int	(*functions[5])(int, int);
+	int	a;
+	int	b;
+	int	index;
 
 	if (argc != 4)
 		return (0);
@@ -22,7 +23,7 @@ int	main(int argc, char **argv)
 	functions[4] = mod;
 	a = ft_atoi(argv[1]);
 	b = ft_atoi(argv[3]);
-	index = get_operation(argv[2][0]);
+	index = get_index(argv[2]);
 	if (index == -1 || check_error(index, b))
 	{
 		if (index == -1)
