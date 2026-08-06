@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincenzo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 18:59:51 by vincenzo          #+#    #+#             */
-/*   Updated: 2026/07/09 19:05:11 by vincenzo         ###   ########.fr       */
+/*   Updated: 2026/08/06 16:27:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@ void	ft_ultimate_div_mod(int *a, int *b)
 {
 	int	temp;
 
+	if (*b == 0)
+		return ;
 	temp = *a / *b;
 	*b = *a % *b;
 	*a = temp;
